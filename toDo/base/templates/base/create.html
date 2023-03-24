@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="create-container">
+    <div class="create-title">
+        <h2>Create task</h2>
+    </div>
+    <div class="createe">
+        <form action="" method="POST" class="create-form">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class="create-div">
+                <a href="{{request.META.HTTP_REFERER}}"> <i class="fa-solid fa-arrow-left"></i> Go back</a>
+                <input type="submit" value="confirm" class="create-button">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

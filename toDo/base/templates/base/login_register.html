@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% if page == 'login' %}
+<div class="login-container">
+  <div class="login-title">
+    <h2>Login</h2>
+  </div>
+  <div class="login">
+    <form action="" method="POST" class="login-form">
+      {% csrf_token %}
+      <div>
+        <label for="username">username: </label>
+      <input type="text" name="username" id="password">
+      </div>
+      <div>
+        <label for="password">password: </label>
+      <input type="password" name="password" id="password">
+      </div>
+      <p class="login-question">haven't signed up, <a href="{% url 'register' %}">register</a></p>
+      <input type="submit" value="login" class="login-button">
+  </form>
+  </div>
+</div>
+{% else %}
+<div class="register-container">
+  <div class="login-title">
+    <h2>Register</h2>
+  </div>
+  <div class="register">
+    <form action="" method="POST" class="register-form">
+      {% csrf_token %}
+      <!-- {{form.as_p}} -->
+      <div class="input-group">
+        <label for="username">{{form.username.label}}: </label>
+      {{form.username}}
+      </div>
+      <div class="input-group">
+        <label for="username">{{form.email.label}}: </label>
+      {{form.email}}
+      </div>
+      <div class="input-group">
+        <label for="username">{{form.password1.label}}: </label>
+      {{form.password1}}
+      </div>
+      <div class="input-group">
+        <label for="username">{{form.password2.label}}: </label>
+      {{form.password2}}
+      </div>
+      <p class="register-question">already signed up, <a href="{% url 'login' %}">login</a></p>
+      <input type="submit" value="sign up" class="register-button">
+  </form>
+  </div>
+</div>
+{% endif %}
+{% endblock content%}
